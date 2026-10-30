@@ -2,7 +2,6 @@
 
 Java 21 / Spring Boot backend that registers players, matches them by skill rating, and manages game sessions. Built to practice concurrency, testability, low-latency reads and observability.
 
-![CI](https://github.com/vyshnavidevi-123/game-session-matchmaking-service/actions/workflows/ci.yml/badge.svg)
 
 ## Stack
 
