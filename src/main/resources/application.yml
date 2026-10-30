@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: game-session-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/gamesession}
+    username: ${DB_USER:gamesession}
+    password: ${DB_PASSWORD:gamesession}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+cache:
+  type: redis
+  session-ttl-seconds: 600
+
+matchmaking:
+  players-per-match: 2
+  base-window: 100
+  widen-per-second: 50
+  max-window: 1000
+  interval-ms: 500
+  scheduler-enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: ${OTLP_TRACING_ENDPOINT:http://localhost:4318/v1/traces}
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-},%X{spanId:-}]"

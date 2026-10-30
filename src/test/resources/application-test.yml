@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:gamesession;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration,org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+
+cache:
+  type: memory
+
+matchmaking:
+  scheduler-enabled: false
+
+management:
+  tracing:
+    enabled: false
